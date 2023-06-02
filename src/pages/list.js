@@ -20,17 +20,17 @@ export function List({ getTodos, addTodo }) {
     getTodos();
   }, []);
 
-  const [newTodo, setNewTodo] = useState();
+  const [newTodo, setNewTodo] = useState("");
 
   const handleNewTodoChange = (event) => {
     setNewTodo(event.target.value);
   };
 
   const handleNewTodoAdd = () => {
-    const value = newTodo;
+    const value = newTodo.trim();
 
     if (value) {
-      addTodo({ title: newTodo, completed: false });
+      addTodo({ title: value, completed: false });
       setNewTodo("");
     }
   };
@@ -50,8 +50,8 @@ export function List({ getTodos, addTodo }) {
         <Button onClick={handleNewTodoAdd}>Add</Button>
 
         {todos &&
-          todos.map((todo, index) => (
-            <Stack key={index} direction="row" align="center">
+          todos.map((todo) => (
+            <Stack key={todo.id} direction="row" align="center">
               <Text
                 textDecoration={todo.completed ? "line-through" : "none"}
                 flex={1}

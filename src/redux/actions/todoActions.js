@@ -52,11 +52,12 @@ export function addTodo(todo) {
       .post(`todos`, todo)
       .then((response) => {
         const newTodo = response.data;
-        const { todos } = getState();
-
+        const { todo } = getState();
+        const todos = todo.todos;
+        console.log(newTodo);
         dispatch({
           type: ADD_TODO,
-          payload: [...todos, newTodo],
+          payload: newTodo,
         });
       })
       .catch((error) => {
