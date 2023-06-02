@@ -1,4 +1,4 @@
-import { ADD_TODO, GET_TODOS } from "../actions/actions";
+import { ADD_TODO, GET_TODOS, UPDATE_TODO } from "../actions/actions";
 
 const initialState = {};
 
@@ -13,6 +13,18 @@ const todoReducer = (state = initialState, action) => {
       return {
         ...state,
         todos: action.payload,
+      };
+    case UPDATE_TODO:
+      const updatedTodo = action.payload;
+      const updatedTodos = state.todos.map((todo) => {
+        if (todo.id === updatedTodo.id) {
+          return updatedTodo;
+        }
+        return todo;
+      });
+      return {
+        ...state,
+        todos: updatedTodos,
       };
     default:
       return state;

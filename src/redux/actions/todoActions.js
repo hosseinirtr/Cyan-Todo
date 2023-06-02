@@ -19,7 +19,8 @@ export const getTodos = () => (dispatch) => {
 
 export function toggleTodo(id) {
   return function (dispatch, getState) {
-    const { todos } = getState();
+    const { todo } = getState();
+    const { todos } = todo;
     const index = todos.findIndex((todo) => todo.id === id);
 
     if (index !== -1) {
@@ -52,9 +53,6 @@ export function addTodo(todo) {
       .post(`todos`, todo)
       .then((response) => {
         const newTodo = response.data;
-        const { todo } = getState();
-        const todos = todo.todos;
-        console.log(newTodo);
         dispatch({
           type: ADD_TODO,
           payload: newTodo,
