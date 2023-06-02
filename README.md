@@ -1,69 +1,98 @@
-# Cyan-Todo
+# Cyan Todo 📝
 
+Cyan Todo is the ultimate task management web app built with React and Redux. With Cyan Todo, you can edit tasks like a ninja 🥷, add comments to any task like a wizard 🧙‍♂️, and break up tasks if completed or not like a superhero 🦸‍♂️. Plus, you can personalize your experience with a profile page like a rockstar 🤘.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Edit tasks like a ninja 🥷
+- Add comments to any task like a wizard 🧙‍♂️
+- Break up tasks if completed or not like a superhero 🦸‍♂️
+- Personalize your experience with a profile page like a rockstar 🤘
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React - because it's the coolest kid on the block 💻
+- Redux - because it's the boss of state management 💪
+- Chakra UI - because it's the coolest UI library around 🎨
+- JSON Server - because it's the swiss army knife of mock APIs 🛠️
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+To run this project, you need to clone both the backend and frontend repositories, download the required dependencies, and start the development servers.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Clone the Backend Repository
 
-### `npm run build`
+```sh
+git clone https://github.com/hosseinirtr/json-server.git
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Create the Database
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+If the `db.json` file is not available, create it using the following command:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+nano db.json
+```
 
-### `npm run eject`
+Then, add the following content to the file:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```json
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Hiring Hossein with high salary",
+      "completed": false
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "todoId": 1
+    }
+  ],
+  "profile": {
+    "name": ""
+  }
+}
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Start the Backend Server
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```sh
+json-server --watch db.json --port 8080
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Note: The backend server runs on port `8080` by default. If you want to use a different port, update the `REACT_APP_SERVER_PORT` variable in the `.env` file of the frontend project like a hacker 🕵️‍♂️.
 
-## Learn More
+### Clone the Frontend Repository
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```sh
+git clone https://github.com/hosseinirtr/Cyan-Todo.git
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Install Dependencies
 
-### Code Splitting
+```sh
+cd Cyan-Todo
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Start the Frontend Server
 
-### Analyzing the Bundle Size
+```sh
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Note: The frontend server runs on port `3000` by default. If you want to use a different port, update the `PORT` variable in the `.env` file of the frontend project like a pro 🦸‍♀️.
 
-### Making a Progressive Web App
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Contributions are always welcome! If you have any ideas or suggestions, please create an issue or submit a pull request like a champion 🏆.
 
-### Advanced Configuration
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Enjoy this awesome project and don't hesitate to contact me if you have any questions or challenges with the project like a warrior 🤺!
