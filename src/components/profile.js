@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getProfile, updateProfile } from "../redux/actions/profileActions";
 import {
-  Stack,
   Text,
-  Heading,
   Box,
   Input,
   Button,
@@ -30,12 +28,13 @@ function Profile({ profile, updateProfile }) {
   const [isProfileUpdated, setIsProfileUpdated] = useState(false);
 
   useEffect(() => {
-    if (!profile || !profile.name) {
-      onOpen();
-    } else {
+    if (!!profile?.name) {
+      onClose();
       setName(profile.name);
+    } else {
+      onOpen();
     }
-  }, [profile, onOpen]);
+  }, [profile, onOpen, onClose]);
 
   const handleNameChange = (event) => {
     setName(event.target.value);

@@ -1,23 +1,13 @@
 import React, { useState } from "react";
-import { addTodo, getTodos, toggleTodo } from "../redux/actions/todoActions";
+import { addTodo, toggleTodo } from "../redux/actions/todoActions";
 import { connect } from "react-redux";
 import { useSelector, shallowEqual } from "react-redux";
 import TodoItem from "../components/todoItem";
-import {
-  Stack,
-  Text,
-  Heading,
-  Box,
-  Input,
-  Button,
-  VStack,
-  HStack,
-  Avatar,
-} from "@chakra-ui/react";
+import { Stack, Text, Box, Input, Button, VStack } from "@chakra-ui/react";
 import { WarningTwoIcon, CheckCircleIcon } from "@chakra-ui/icons";
 import Profile from "../components/profile";
 
-export function List({ getTodos, addTodo, toggleTodo }) {
+export function List({ addTodo, toggleTodo }) {
   const { todos } = useSelector((data) => data.todo, shallowEqual);
   const [newTodo, setNewTodo] = useState("");
 
@@ -108,7 +98,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  getTodos,
   toggleTodo,
   addTodo,
 };
