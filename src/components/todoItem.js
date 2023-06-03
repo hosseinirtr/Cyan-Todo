@@ -12,9 +12,10 @@ import {
   AccordionPanel,
 } from "@chakra-ui/react";
 import { connect, shallowEqual, useSelector } from "react-redux";
+import { deleteTodo } from "../redux/actions/todoActions";
 import { addComments, getComments } from "../redux/actions/commentActions";
 
-function TodoItem({ todo, toggleTodo, addComments }) {
+function TodoItem({ todo, toggleTodo, addComments, deleteTodo }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(todo.title);
   const [commentText, setCommentText] = useState("");
@@ -64,6 +65,10 @@ function TodoItem({ todo, toggleTodo, addComments }) {
     }
   };
 
+  const handleDeleteButtonClick = () => {
+    deleteTodo(todo.id);
+  };
+
   const allCommetns = useSelector(
     (data) => data.comment.comments,
     shallowEqual
@@ -89,6 +94,10 @@ function TodoItem({ todo, toggleTodo, addComments }) {
       backgroundColor={"#e9ffff"}
     >
       <Stack direction="row" align="center">
+        <Checkbox
+          isChecked={todo.completed}
+          onChange={() => handleTodoToggle(todo.id)}
+        />
         {isEditing ? (
           <>
             <Input
@@ -111,14 +120,13 @@ function TodoItem({ todo, toggleTodo, addComments }) {
               {todo.title}
             </Text>
             <Button onClick={handleEditButtonClick}>Edit</Button>
+            <Button onClick={handleDeleteButtonClick}>Delete</Button>
+
           </>
         )}
-        <Checkbox
-          isChecked={todo.completed}
-          onChange={() => handleTodoToggle(todo.id)}
-        />
+
       </Stack>
-      {}
+      { }
       <Accordion mt={4}>
         <AccordionItem>
           <Text color={"#0bdbb6"}>
@@ -147,6 +155,7 @@ function TodoItem({ todo, toggleTodo, addComments }) {
     </Card>
   );
 }
+
 const mapStateToProps = (state) => ({
   comments: state.comments,
 });
@@ -154,6 +163,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   getComments,
   addComments,
+  deleteTodo,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoItem);

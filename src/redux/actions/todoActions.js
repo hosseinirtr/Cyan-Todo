@@ -67,3 +67,22 @@ export function addTodo(todo) {
       });
   };
 }
+export function deleteTodo(todoId) {
+  return function (dispatch, getState) {
+    return apiClient
+      .delete(`todos/${todoId}`)
+      .then((response) => {
+        dispatch({
+          type: 'DELETE_TODO',
+          payload: todoId,
+        });
+      })
+      .catch((error) => {
+        console.error("error", error);
+        dispatch({
+          type: SET_ERROR,
+          payload: error,
+        });
+      });
+  };
+}
